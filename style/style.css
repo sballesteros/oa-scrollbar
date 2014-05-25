@@ -1,0 +1,80 @@
+/* adapted from http://www.script-tutorials.com/custom-scrollbars-cross-browser-solution/ */
+
+body {
+  background:#eee;
+  margin:0;
+  padding:0;
+}
+
+.example {
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  background:#FFF;
+  border:1px #000 solid;
+  height:600px;
+  margin:20px auto;
+  padding:15px;
+  position:relative;
+  width:800px;
+}
+
+#main {
+  height:80%;
+  left:5%;
+  overflow:auto;
+  position:absolute;
+  top:5%;
+  width:90%;
+}
+
+/* see http://blogs.msdn.com/b/kurlak/archive/2013/11/03/hiding-vertical-scrollbars-with-pure-css-in-chrome-ie-6-firefox-opera-and-safari.aspx */
+#main::-webkit-scrollbar {
+  display: none;
+}
+
+.oasb_down {
+  background: red;
+  bottom:0;
+  cursor:pointer;
+  position:absolute;
+  right:0;
+}
+
+.oasb_sb {
+  background:rgba(40,40,40,0.1);
+  cursor:pointer;
+  position:absolute;
+  right:0;
+}
+
+.oasb_sb_down {
+  background: green;
+}
+
+.oasb_sb_over {
+  background: pink;
+}
+
+.oasb_st {
+  border: solid 1px rgba(200,200,200,0.3);
+  cursor:pointer;
+  height:100%;
+  position:absolute;
+  right:0;
+  top:0;
+}
+
+.oasb_up {
+  background: red;
+  cursor:pointer;
+  position:absolute;
+  right:0;
+  top:0;
+}
+
+.parent {
+  font-family:verdana;
+  height:100%;
+  padding:10px;
+  position:relative;
+}
