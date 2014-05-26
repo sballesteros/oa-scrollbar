@@ -64,7 +64,8 @@ body {
 }
 
 .oasb_st {
-  border: solid 1px rgba(200,200,200,0.3);
+  border-left: solid 1px rgba(200,200,200,0.3);
+  border-right: solid 1px rgba(200,200,200,0.3);
   background-color: transparent;
   cursor:pointer;
   height:100%;

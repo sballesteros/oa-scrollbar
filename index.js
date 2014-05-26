@@ -126,7 +126,7 @@ OaScrollbar.prototype.onmouseup = function(e){
 OaScrollbar.prototype.refresh = function(e){
   this.onscroll();
   this.sb.style.width = this.st.style.width = this.sw + 'px';
-  this.sb.style.height = Math.ceil(Math.max(this.sw * .5, this.ratio * this.cont.offsetHeight) + 1) + 'px';
+  this.sb.style.height = Math.ceil(Math.max(this.sw * .5, this.ratio * this.cont.offsetHeight)) + 'px';
 };
 
 
