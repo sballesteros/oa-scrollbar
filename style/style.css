@@ -91,6 +91,7 @@ body {
   margin-right:1px;
   border: solid 1px white;
   background-color: orange;
+  z-index:10;
 }
 
 .oasb-marker-highlight{

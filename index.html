@@ -10,7 +10,7 @@
          var sb = new OaScrollbar('main');
          
          ['first', 'second', 'third', 'fourth'].forEach(function(id){
-           var range = new Range();
+           var range = document.createRange();
            range.selectNodeContents(document.getElementById(id));
            sb.addMarker(range);
          });
