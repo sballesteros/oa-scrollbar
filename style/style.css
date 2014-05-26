@@ -10,12 +10,18 @@ body {
   -moz-border-radius:3px;
   -webkit-border-radius:3px;
   background:#FFF;
-  border:1px #000 solid;
   height:600px;
   margin:20px auto;
   padding:15px;
   position:relative;
   width:800px;
+}
+
+.parent {
+  font-family:verdana;
+  height:100%;
+  padding:10px;
+  position:relative;
 }
 
 #main {
@@ -32,6 +38,7 @@ body {
   display: none;
 }
 
+
 .oasb_down {
   background: red;
   bottom:0;
@@ -42,6 +49,7 @@ body {
 
 .oasb_sb {
   background:rgba(40,40,40,0.1);
+  margin-right: 1px;
   cursor:pointer;
   position:absolute;
   right:0;
@@ -57,6 +65,7 @@ body {
 
 .oasb_st {
   border: solid 1px rgba(200,200,200,0.3);
+  background-color: transparent;
   cursor:pointer;
   height:100%;
   position:absolute;
@@ -72,9 +81,23 @@ body {
   top:0;
 }
 
-.parent {
-  font-family:verdana;
-  height:100%;
-  padding:10px;
-  position:relative;
+/* markers */
+
+.oasb-marker{
+  position: absolute;
+  cursor:pointer;
+  right:0;
+  margin-right:1px;
+  border: solid 1px white;
+  background-color: orange;
+}
+
+.oasb-marker-highlight{
+  border: solid 1px black;
+}
+
+#first, #second, #third, #fourth{
+  background-color: orange;  
+  margin-left: 20px;
+  margin-right: 20px;
 }

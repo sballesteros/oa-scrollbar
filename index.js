@@ -31,6 +31,11 @@ function OaScrollbar(containerId, opts){
   this.st = _createDiv('oasb_st', contClone);
   this.sb = _createDiv('oasb_sb', contClone);
 
+  //markers container
+  this.markersContainer = _createDiv('markers', contClone);
+  this.markers = {};
+  this.globalCnt = 0;
+
   // on mouse down processing
   this.sb.onmousedown = function (e) {
     if (! that.sg) {
@@ -74,13 +79,30 @@ function OaScrollbar(containerId, opts){
 
   // binding own onscroll event
   this.cont.addEventListener('scroll', this.onscroll.bind(this), false);
-
 };
 
 // onscroll - change positions of scroll element
 OaScrollbar.prototype.onscroll = function(e){
+
   this.ratio = this.cont.offsetHeight / this.cont.scrollHeight;
-  this.sb.style.top = Math.floor(this.cont.scrollTop * this.ratio) + 'px';
+  var topSb = Math.floor(this.cont.scrollTop * this.ratio);
+  this.sb.style.top = topSb + 'px';
+  var bottomSb = topSb + this.sb.offsetHeight;
+
+  //if marker whithin sb: highlight
+
+  for(var key in this.markers){
+    var $marker = this.markers[key];
+    var topMarker = _getValue($marker.style.top);
+    var bottomMarker = topMarker + _getValue($marker.style.height);
+
+    if( (topSb<topMarker) && (bottomMarker<bottomSb) || ((topMarker<bottomSb) && (bottomMarker>bottomSb)) || ((bottomMarker>topSb) && (topMarker<topSb)) ){
+      $marker.classList.add('oasb-marker-highlight');
+    } else {
+      $marker.classList.remove('oasb-marker-highlight');
+    }
+  }
+
 };
 
 OaScrollbar.prototype.onmousemove = function(e){
@@ -108,11 +130,43 @@ OaScrollbar.prototype.refresh = function(e){
 };
 
 
+OaScrollbar.prototype.addMarker = function(range){
+  var $marker = document.createElement("div");
+  $marker.className = 'oasb-marker';
+  $marker.id = 'marker-' + this.globalCnt;
+  $marker.onmousedown = this.st.onmousedown.bind(this);
+
+  var $ancestor = range.commonAncestorContainer;
+  var $el;
+  if ($ancestor.nodeType === 3) {
+    $el = $ancestor.parentNode;
+  } else if($ancestor.nodeType === 1) {
+    $el = $ancestor;
+  };
+
+  var boxMarker = $el.getBoundingClientRect();
+  var boxCont = this.cont.getBoundingClientRect();
+
+  var height = $el.offsetHeight;
+  var top = boxMarker.top - boxCont.top;
+
+  $marker.style.top = top*this.ratio + 'px';
+  $marker.style.height = Math.ceil(Math.max(this.sw * .5, height * this.ratio) + 1) + 'px';
+  $marker.style.width = (this.sw-2) + 'px';
+
+  this.markersContainer.appendChild($marker);
+
+  this.markers[$marker.id] = $marker;
+  this.globalCnt++;
+  this.refresh();
+};
+
+
 function _addEvent (o, e, f) {
   if (window.addEventListener) { o.addEventListener(e, f, false); return true; }
   if (window.attachEvent) return o.attachEvent('on' + e, f);
   return false;
-}
+};
 
 function _createDiv (className, contClone) {
   var o = document.createElement('div');
@@ -120,5 +174,16 @@ function _createDiv (className, contClone) {
   contClone.appendChild(o);
   return o;
 };
+
+function _getValue(x){
+  if(typeof x === 'number') {
+    return x
+  } else if(typeof x === 'string' && x.indexOf('px') !==-1){
+    return parseInt(x.slice(0,x.length-2), 10);
+  } else {
+    throw new Error('_getValue error ' + x);
+  }
+};
+
 
 module.exports = OaScrollbar;

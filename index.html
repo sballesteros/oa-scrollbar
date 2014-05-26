@@ -8,6 +8,12 @@
 
       document.addEventListener('DOMContentLoaded', function(e){      
          var sb = new OaScrollbar('main');
+         
+         ['first', 'second', 'third', 'fourth'].forEach(function(id){
+           var range = new Range();
+           range.selectNodeContents(document.getElementById(id));
+           sb.addMarker(range);
+         });
       });
     </script>
   </head>
@@ -19,6 +25,111 @@
 
         <div class="parent">
 
+          <p id="first">
+            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
+            magna gravida fermentum in sed felis. Nulla eu leo molestie,
+            luctus massa consequat, aliquet lorem. Vivamus nec euismod
+            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
+            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
+            ultrices quam ultricies, volutpat augue.
+            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
+            magna gravida fermentum in sed felis. Nulla eu leo molestie,
+            luctus massa consequat, aliquet lorem. Vivamus nec euismod
+            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
+            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
+            ultrices quam ultricies, volutpat augue.
+            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
+            magna gravida fermentum in sed felis. Nulla eu leo molestie,
+            luctus massa consequat, aliquet lorem. Vivamus nec euismod
+            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
+            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
+            ultrices quam ultricies, volutpat augue.
+            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
+            magna gravida fermentum in sed felis. Nulla eu leo molestie,
+            luctus massa consequat, aliquet lorem. Vivamus nec euismod
+            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
+            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
+            ultrices quam ultricies, volutpat augue.
+          </p>
+
+          <p>
+            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
+            magna gravida fermentum in sed felis. Nulla eu leo molestie,
+            luctus massa consequat, aliquet lorem. Vivamus nec euismod
+            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
+            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
+            ultrices quam ultricies, volutpat augue.
+          </p>
+
+          <p>
+            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
+            magna gravida fermentum in sed felis. Nulla eu leo molestie,
+            luctus massa consequat, aliquet lorem. Vivamus nec euismod
+            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
+            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
+            ultrices quam ultricies, volutpat augue.
+          </p>
+
+          <p id="second">
+            Donec odio velit, venenatis ut elementum sed, ullamcorper quis
+            mi. Vestibulum ultrices, odio vel rutrum volutpat, nunc sem hendrerit
+            lacus, quis sollicitudin ligula tellus in sem. Sed viverra sit amet
+            lorem vel cursus. Aenean a metus metus. Class aptent taciti sociosqu
+            ad litora torquent per conubia nostra, per inceptos himenaeos. Cras
+            sit amet mattis dui. Ut scelerisque vestibulum lacus, tempus interdum
+            neque adipiscing a. Vivamus vitae eros arcu. Proin euismod elit vel
+            justo porttitor, vitae tempus massa porta. Sed a est cursus, pretium
+            sem a, cursus magna.
+          </p>
+
+          <p id="third">
+            1 line super short
+          </p>
+
+          <p>
+            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
+            magna gravida fermentum in sed felis. Nulla eu leo molestie,
+            luctus massa consequat, aliquet lorem. Vivamus nec euismod
+            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
+            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
+            ultrices quam ultricies, volutpat augue.
+          </p>
+
+          <p>
+            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
+            magna gravida fermentum in sed felis. Nulla eu leo molestie,
+            luctus massa consequat, aliquet lorem. Vivamus nec euismod
+            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
+            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
+            ultrices quam ultricies, volutpat augue.
+          </p>
+
+          <p>
+            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
+            magna gravida fermentum in sed felis. Nulla eu leo molestie,
+            luctus massa consequat, aliquet lorem. Vivamus nec euismod
+            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
+            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
+            ultrices quam ultricies, volutpat augue.
+          </p>
+
+          <p>
+            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
+            magna gravida fermentum in sed felis. Nulla eu leo molestie,
+            luctus massa consequat, aliquet lorem. Vivamus nec euismod
+            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
+            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
+            ultrices quam ultricies, volutpat augue.
+          </p>
+
+          <p>
+            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
+            magna gravida fermentum in sed felis. Nulla eu leo molestie,
+            luctus massa consequat, aliquet lorem. Vivamus nec euismod
+            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
+            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
+            ultrices quam ultricies, volutpat augue.
+          </p>
           <p>
             Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
             magna gravida fermentum in sed felis. Nulla eu leo molestie,
@@ -91,102 +202,15 @@
             ultrices quam ultricies, volutpat augue.
           </p>
 
-          <p>
-            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
-            magna gravida fermentum in sed felis. Nulla eu leo molestie,
-            luctus massa consequat, aliquet lorem. Vivamus nec euismod
-            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
-            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
-            ultrices quam ultricies, volutpat augue.
-          </p>
-
-          <p>
-            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
-            magna gravida fermentum in sed felis. Nulla eu leo molestie,
-            luctus massa consequat, aliquet lorem. Vivamus nec euismod
-            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
-            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
-            ultrices quam ultricies, volutpat augue.
-          </p>
-          <p>
-            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
-            magna gravida fermentum in sed felis. Nulla eu leo molestie,
-            luctus massa consequat, aliquet lorem. Vivamus nec euismod
-            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
-            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
-            ultrices quam ultricies, volutpat augue.
-          </p>
-
-          <p>
-            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
-            magna gravida fermentum in sed felis. Nulla eu leo molestie,
-            luctus massa consequat, aliquet lorem. Vivamus nec euismod
-            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
-            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
-            ultrices quam ultricies, volutpat augue.
-          </p>
-
-          <p>
-            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
-            magna gravida fermentum in sed felis. Nulla eu leo molestie,
-            luctus massa consequat, aliquet lorem. Vivamus nec euismod
-            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
-            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
-            ultrices quam ultricies, volutpat augue.
-          </p>
-
-          <p>
-            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
-            magna gravida fermentum in sed felis. Nulla eu leo molestie,
-            luctus massa consequat, aliquet lorem. Vivamus nec euismod
-            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
-            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
-            ultrices quam ultricies, volutpat augue.
-          </p>
-
-          <p>
-            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
-            magna gravida fermentum in sed felis. Nulla eu leo molestie,
-            luctus massa consequat, aliquet lorem. Vivamus nec euismod
-            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
-            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
-            ultrices quam ultricies, volutpat augue.
-          </p>
-
-          <p>
-            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
-            magna gravida fermentum in sed felis. Nulla eu leo molestie,
-            luctus massa consequat, aliquet lorem. Vivamus nec euismod
-            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
-            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
-            ultrices quam ultricies, volutpat augue.
-          </p>
-
-          <p>
-            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
-            magna gravida fermentum in sed felis. Nulla eu leo molestie,
-            luctus massa consequat, aliquet lorem. Vivamus nec euismod
-            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
-            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
-            ultrices quam ultricies, volutpat augue.
-          </p>
-
-          <p>
-            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
-            magna gravida fermentum in sed felis. Nulla eu leo molestie,
-            luctus massa consequat, aliquet lorem. Vivamus nec euismod
-            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
-            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
-            ultrices quam ultricies, volutpat augue.
-          </p>
-
-          <p>
-            Duis bibendum nulla dictum tempor euismod. Fusce sed dui in
-            magna gravida fermentum in sed felis. Nulla eu leo molestie,
-            luctus massa consequat, aliquet lorem. Vivamus nec euismod
-            nulla. Maecenas pulvinar semper pharetra. Aenean vitae dolor
-            ornare, congue nunc eu, lobortis arcu. In ac magna lacinia,
-            ultrices quam ultricies, volutpat augue.
+          <p id="fourth">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel
+            hendrerit erat, eget commodo urna. Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit. Aenean in ligula at sem bibendum vehicula
+            at ut dolor. Cras in tortor nec enim consectetur luctus. Vivamus
+            mollis, justo et auctor placerat, diam orci interdum nisl, ac egestas
+            eros tellus in metus. Donec bibendum sapien et elementum
+            tristique. Phasellus hendrerit velit ut sodales dictum. Donec egestas
+            felis a est eleifend ullamcorper.
           </p>
 
           <p>
