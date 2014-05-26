@@ -34,6 +34,7 @@ function OaScrollbar(containerId, opts){
   //markers container
   this.markersContainer = _createDiv('markers', contClone);
   this.markers = {};
+  this.markersId = {}; //map resource id to markers id
   this.globalCnt = 0;
 
   // on mouse down processing
@@ -130,7 +131,7 @@ OaScrollbar.prototype.refresh = function(e){
 };
 
 
-OaScrollbar.prototype.addMarker = function(range){
+OaScrollbar.prototype.addMarker = function(range, id){
   var $marker = document.createElement("div");
   $marker.className = 'oasb-marker';
   $marker.id = 'marker-' + this.globalCnt;
@@ -157,8 +158,28 @@ OaScrollbar.prototype.addMarker = function(range){
   this.markersContainer.appendChild($marker);
 
   this.markers[$marker.id] = $marker;
+  if(id){
+    if(this.markersId[id]){
+      this.markersId[id].push($marker);
+    } else {
+      this.markersId[id] = [ $marker ];
+    }
+  }
+
   this.globalCnt++;
   this.refresh();
+};
+
+OaScrollbar.prototype.removeMarker = function(id){
+
+  if(id in this.markersId){
+    this.markersId[id].forEach(function($el){
+      this.markersContainer.removeChild($el);
+    }, this);
+    delete this.markersId[id];
+    delete this.markers[id];
+  }
+
 };
 
 

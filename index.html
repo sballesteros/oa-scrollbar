@@ -12,17 +12,31 @@
          ['first', 'second', 'third', 'fourth'].forEach(function(id){
            var range = document.createRange();
            range.selectNodeContents(document.getElementById(id));
-           sb.addMarker(range);
+           sb.addMarker(range, id);
          });
+
+         var $del = document.getElementById('delete');
+         $del.onclick = function(e){
+            sb.removeMarker('first'); 
+         };
+
+         var $add = document.getElementById('add');
+         $add.onclick = function(e){
+           var range = document.createRange();
+           range.selectNodeContents(document.getElementById('first'));
+           sb.addMarker(range, 'first'); 
+         };
+
       });
     </script>
   </head>
   <body>
 
+    <button id="delete">delete first marker(s)</button>
+    <button id="add">add first marker(s)</button>
+
     <div class="example">
-
       <div id="main">
-
         <div class="parent">
 
           <p id="first">
@@ -225,5 +239,7 @@
         </div>
       </div>
     </div>
+
+
   </body>
 </html>
