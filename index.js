@@ -1,11 +1,13 @@
 //adapted from http://www.script-tutorials.com/custom-scrollbars-cross-browser-solution/
 
 function OaScrollbar(containerId, opts){
+
   opts = opts || {};
 
   var that = this;
 
   this.cont = document.getElementById(containerId);
+
   this.mouseY = 0;
   this.sg = false;
 
@@ -149,7 +151,7 @@ OaScrollbar.prototype.addMarker = function(range, id){
   var boxCont = this.cont.getBoundingClientRect();
 
   var height = $el.offsetHeight;
-  var top = boxMarker.top - boxCont.top;
+  var top = boxMarker.top + this.cont.scrollTop - boxCont.top;
 
   $marker.style.top = top*this.ratio + 'px';
   $marker.style.height = Math.ceil(Math.max(this.sw * .5, height * this.ratio) + 1) + 'px';
