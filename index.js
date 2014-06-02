@@ -36,7 +36,6 @@ function OaScrollbar(containerId, opts){
   //markers container
   this.markersContainer = _createDiv('markers', contClone);
   this.markers = {};
-  this.markersId = {}; //map resource id to markers id
   this.globalCnt = 0;
 
   // on mouse down processing
@@ -95,7 +94,7 @@ OaScrollbar.prototype.onscroll = function(e){
   //if marker whithin sb: highlight
 
   for(var key in this.markers){
-    var $marker = this.markers[key];
+    var $marker = this.markers[key].$el;
     var topMarker = _getValue($marker.style.top);
     var bottomMarker = topMarker + _getValue($marker.style.height);
 
@@ -126,10 +125,18 @@ OaScrollbar.prototype.onmouseup = function(e){
   this.sg = false;
 };
 
+
 OaScrollbar.prototype.refresh = function(e){
   this.onscroll();
   this.sb.style.width = this.st.style.width = this.sw + 'px';
   this.sb.style.height = Math.ceil(Math.max(this.sw * .5, this.ratio * this.cont.offsetHeight)) + 'px';
+
+  //resize markers
+  for(var key in this.markers){
+    var marker = this.markers[key];
+    _setMarkerStyle.call(this, marker.$el, marker.range);
+  }
+
 };
 
 
@@ -139,33 +146,13 @@ OaScrollbar.prototype.addMarker = function(range, id){
   $marker.id = 'marker-' + this.globalCnt;
   $marker.onmousedown = this.st.onmousedown.bind(this);
 
-  var $ancestor = range.commonAncestorContainer;
-  var $el;
-  if ($ancestor.nodeType === 3) {
-    $el = $ancestor.parentNode;
-  } else if($ancestor.nodeType === 1) {
-    $el = $ancestor;
-  };
-
-  var boxMarker = $el.getBoundingClientRect();
-  var boxCont = this.cont.getBoundingClientRect();
-
-  var height = $el.offsetHeight;
-  var top = boxMarker.top + this.cont.scrollTop - boxCont.top;
-
-  $marker.style.top = top*this.ratio + 'px';
-  $marker.style.height = Math.ceil(Math.max(this.sw * .5, height * this.ratio) + 1) + 'px';
-  $marker.style.width = (this.sw-2) + 'px';
+  _setMarkerStyle.call(this, $marker, range);
 
   this.markersContainer.appendChild($marker);
 
-  this.markers[$marker.id] = $marker;
+  this.markers[$marker.id] = {range: range, $el: $marker};
   if(id){
-    if(this.markersId[id]){
-      this.markersId[id].push($marker);
-    } else {
-      this.markersId[id] = [ $marker ];
-    }
+    this.markers[$marker.id].id = id;
   }
 
   this.globalCnt++;
@@ -174,12 +161,12 @@ OaScrollbar.prototype.addMarker = function(range, id){
 
 OaScrollbar.prototype.removeMarker = function(id){
 
-  if(id in this.markersId){
-    this.markersId[id].forEach(function($el){
-      this.markersContainer.removeChild($el);
-    }, this);
-    delete this.markersId[id];
-    delete this.markers[id];
+  for(var key in this.markers){
+    var marker = this.markers[key];
+    if(marker.id === id){
+      this.markersContainer.removeChild(marker.$el);
+      delete this.markers[key];
+    }
   }
 
 };
@@ -208,5 +195,26 @@ function _getValue(x){
   }
 };
 
+//this is an instance of OaScrollbar
+function _setMarkerStyle($marker, range){
+
+  var $ancestor = range.commonAncestorContainer;
+  var $el;
+  if ($ancestor.nodeType === 3) {
+    $el = $ancestor.parentNode;
+  } else if($ancestor.nodeType === 1) {
+    $el = $ancestor;
+  };
+
+  var boxMarker = $el.getBoundingClientRect();
+  var boxCont = this.cont.getBoundingClientRect();
+
+  var height = $el.offsetHeight;
+  var top = boxMarker.top + this.cont.scrollTop - boxCont.top;
+
+  $marker.style.top = top*this.ratio + 'px';
+  $marker.style.height = Math.ceil(Math.max(this.sw * .5, height * this.ratio) + 1) + 'px';
+  $marker.style.width = (this.sw-2) + 'px';
+};
 
 module.exports = OaScrollbar;
