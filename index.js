@@ -136,11 +136,10 @@ OaScrollbar.prototype.refresh = function(e){
     var marker = this.markers[key];
     _setMarkerStyle.call(this, marker.$el, marker.range);
   }
-
 };
 
 
-OaScrollbar.prototype.addMarker = function(range, id){
+OaScrollbar.prototype.addMarker = function(range, resourceId){
   var $marker = document.createElement("div");
   $marker.className = 'oasb-marker';
   $marker.id = 'marker-' + this.globalCnt;
@@ -151,19 +150,33 @@ OaScrollbar.prototype.addMarker = function(range, id){
   this.markersContainer.appendChild($marker);
 
   this.markers[$marker.id] = {range: range, $el: $marker};
-  if(id){
-    this.markers[$marker.id].id = id;
+  if(resourceId){
+    this.markers[$marker.id].id = resourceId;
   }
 
   this.globalCnt++;
   this.refresh();
+
+  return $marker.id
 };
+
 
 OaScrollbar.prototype.removeMarker = function(id){
 
+  if(this.markers[id]){
+    this.markersContainer.removeChild(this.markers[id].$el);
+    delete this.markers[id];
+  }
+
+};
+
+
+
+OaScrollbar.prototype.removeMarkers = function(resourceId){
+
   for(var key in this.markers){
     var marker = this.markers[key];
-    if(marker.id === id){
+    if(marker.id === resourceId){
       this.markersContainer.removeChild(marker.$el);
       delete this.markers[key];
     }
